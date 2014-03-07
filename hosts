@@ -1,0 +1,69 @@
+# Hadoop Nodes
+###############
+
+[hadoop-hdfs-namenode]
+sandbox 
+
+[hadoop-hdfs-secondarynamenode]
+sandbox 
+
+[hadoop-hdfs-zkfc]
+
+[hadoop-yarn-resourcemanager]
+sandbox 
+
+[hadoop-yarn-nodemanager]
+sandbox 
+
+[hadoop-hdfs-datanode]
+sandbox 
+
+[hadoop-mapreduce-historyserver]
+sandbox 
+
+[hadoop:children]
+hadoop-hdfs-namenode
+hadoop-hdfs-secondarynamenode
+hadoop-hdfs-zkfc
+hadoop-yarn-resourcemanager
+hadoop-yarn-nodemanager
+hadoop-mapreduce-historyserver
+
+[hadoop:vars]
+
+
+# Zookeeper
+##############
+[zookeepers] 
+sandbox zookeeper_id=1
+
+[zookeepers:vars] 
+
+
+# Hive Nodes
+###############
+
+[hive-metastore]
+sandbox
+
+[hive-server2]
+sandbox
+
+
+# HBase Nodes
+###############
+
+[hbase_master]
+sandbox
+
+[regionserver]
+sandbox
+
+# RDB mysql? postgresql
+###############
+
+# Groups
+###############
+
+
+

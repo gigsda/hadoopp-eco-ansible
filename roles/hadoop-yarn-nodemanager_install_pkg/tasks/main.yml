@@ -1,0 +1,4 @@
+
+- name: install hadoop yarn nodemanager pkg
+  yum: pkg=hadoop-yarn-nodemanager state=installed
+

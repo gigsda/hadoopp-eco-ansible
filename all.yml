@@ -1,0 +1,32 @@
+
+
+- hosts: hadoop-hdfs-namenode
+  roles:
+    - hadoop-hdfs-namenode_install_pkg
+
+
+- hosts: hadoop-hdfs-secondarynamenode
+  roles:
+    - hadoop-hdfs-secondarynamenode_install_pkg
+
+
+- hosts: hadoop-mapreduce-historyserver
+  roles:
+    - hadoop-mapreduce-historyserver_install_pkg
+
+
+- hosts: hadoop-yarn-resourcemanager
+  roles:
+    - hadoop-yarn-resourcemanager_install_pkg
+
+
+- hosts: hadoop-yarn-nodemanager 
+  roles:
+    - hadoop-yarn-nodemanager_install_pkg
+
+- hosts: hadoop-hdfs-datanode
+  roles:
+    - hadoop-hdfs-datanode_install_pkg
+
+
+

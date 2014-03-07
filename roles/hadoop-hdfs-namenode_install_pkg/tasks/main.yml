@@ -1,0 +1,3 @@
+
+- name: install hadoop hdfs secondarynamenode pkg
+  yum: pkg=hadoop-hdfs-secondarynamenode state=installed
