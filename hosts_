@@ -2,30 +2,29 @@
 ###############
 
 [hadoop-hdfs-namenode]
-tb4 
+sandbox 
 
 [hadoop-hdfs-secondarynamenode]
-tb4 
+sandbox 
 
 [hadoop-hdfs-zkfc]
 
 [hadoop-yarn-resourcemanager]
-tb4 
+sandbox 
 
 [hadoop-yarn-nodemanager]
-tb4 
+sandbox 
 
 [hadoop-hdfs-datanode]
-tb4 
+sandbox 
 
 [hadoop-mapreduce-historyserver]
-tb4 
+sandbox 
 
 [hadoop:children]
 hadoop-hdfs-namenode
 hadoop-hdfs-secondarynamenode
 hadoop-hdfs-zkfc
-hadoop-hdfs-datanode
 hadoop-yarn-resourcemanager
 hadoop-yarn-nodemanager
 hadoop-mapreduce-historyserver
@@ -33,12 +32,10 @@ hadoop-mapreduce-historyserver
 [hadoop:vars]
 
 
-
-
 # Zookeeper
 ##############
 [zookeepers] 
-tb4 zookeeper_id=1
+sandbox zookeeper_id=1
 
 [zookeepers:vars] 
 
@@ -47,25 +44,24 @@ tb4 zookeeper_id=1
 ###############
 
 [hive-metastore]
-tb4
+sandbox
 
 [hive-server2]
-tb4
+sandbox
 
 
 # HBase Nodes
 ###############
 
 [hbase_master]
-tb4
+sandbox
 
 [regionserver]
-tb4
+sandbox
 
 # RDB mysql? postgresql
 ###############
-[mysql]
-tb4
+
 # Groups
 ###############
 

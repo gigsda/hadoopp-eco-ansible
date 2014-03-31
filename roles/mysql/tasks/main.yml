@@ -1,0 +1,41 @@
+
+
+- name: install mysql pkg
+  yum: pkg={{ item }} state=installed
+  when: ansible_hostname in groups['mysql']
+  with_items:
+     - python-mysqldb
+     - mysql-server
+
+- name: start mysqld
+  service: name=mysqld state=started
+  when: ansible_hostname in groups['mysql']
+
+- name: set mysql root
+  action: shell mysqladmin -u root password 12345
+  ignore_errors: yes
+  when: ansible_hostname in groups['mysql']
+    - install-mysql
+
+- name: set mysql root localhost
+  action: shell mysql -u root -p12345 -e "grant all privileges on *.* to root@'localhost' identified by '12345' with grant option;"
+  ignore_errors: yes
+  when: ansible_hostname in groups['mysql']
+
+- name: set mysql root 127.0.0.1
+  action: shell mysql -u root -p12345 -e "grant all privileges on *.* to root@'127.0.0.1' identified by '12345' with grant option;"
+  ignore_errors: yes
+  when: ansible_hostname in groups['mysql']
+
+- name: set mysql root all
+  action: shell mysql -u root -p12345 -e "grant all privileges on *.* to root@'%' identified by '12345' with grant option;"
+  ignore_errors: yes
+  when: ansible_hostname in groups['mysql']
+
+
+- name: add hive user  
+  mysql_user: host=mysql[0] login_user=root login_password=12345 name=hive password=12345 priv=*.*:ALL,GRANT state=present
+
+
+
+

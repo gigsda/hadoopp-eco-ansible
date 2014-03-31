@@ -1,0 +1,9 @@
+
+
+
+
+- hosts: hive_server2
+  roles:
+    - hive_server
+
+

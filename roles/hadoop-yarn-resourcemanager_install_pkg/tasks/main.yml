@@ -1,4 +1,0 @@
-
-- name: install hadoop yarn resourcemanager pkg
-  yum: pkg=hadoop-yarn-resourcemanager state=installed
-

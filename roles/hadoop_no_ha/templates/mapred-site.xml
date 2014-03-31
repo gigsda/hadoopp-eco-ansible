@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+
+<configuration>
+    <property>  
+            <name>mapred.job.tracker</name>  
+            <value>tb4:50300</value> 
+    </property>  
+    <property>  
+            <name>mapreduce.framework.name</name>  
+            <value>yarn</value> 
+    </property>  
+    <property>  
+            <name>mapred.job.tracker.http.address</name>  
+            <value>tb4:50030</value> 
+    </property>  
+    <property>  
+            <name>mapred.local.dir</name>  
+            <value>/data01/hadoop/mapred/local</value> 
+    </property>  
+    <property>  
+            <name>mapreduce.tasktracker.group</name>  
+            <value>hadoop</value> 
+    </property>  
+    <property>       
+       <name>mapreduce.jobhistory.address</name>       
+       <value>tb4:10020</value>  
+    <description>Enter your JobHistoryServer hostname.</description>
+      </property>
+    <property>       
+       <name>mapreduce.jobhistory.webapp.address</name>       
+       <value>tb4:19888</value>  
+       <description>Enter your JobHistoryServer hostname.</description>
+   </property>
+   <property>       
+       <name>mapreduce.jobhistory.intermediate-done-dir</name>       
+       <value>/mr-history/tmp</value>  
+   </property>
+   <property>       
+       <name>mapreduce.jobhistory.done-dir</name>       
+       <value>/mr-history/done</value>  
+   </property>
+   <property>
+   <name>io.compression.codecs</name>    
+       <value>org.apache.hadoop.io.compress.GzipCodec,org.apache.hadoop.io.compress.DefaultCodec,org.apache.hadoop.io.compress.SnappyCodec</value>
+   </property>
+</configuration>

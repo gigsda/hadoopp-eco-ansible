@@ -1,3 +1,0 @@
-
-- name: install hadoop hdfs namenode pkg
-  yum: pkg=hadoop-hdfs-namenode state=installed

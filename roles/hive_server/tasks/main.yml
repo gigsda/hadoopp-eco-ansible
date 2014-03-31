@@ -1,0 +1,23 @@
+
+
+- name: install hive-server pkg
+  yum: pkg={{ item }} state=installed
+  when: ansible_hostname in groups['hive-server2']
+  with_items:
+     - hive-server2
+     - mysql-connector-java*
+
+- name: Add MySQL drivers on hive
+  action: file src=/usr/share/java/mysql-connector-java.jar dest=/usr/lib/hive/lib/mysql-connector-java.jar state=link
+  when: ansible_hostname in groups['hive-server2']
+
+- name: set config for hive
+  action: template src=templates/{{ item }} dest=/etc/hive/conf/{{ item }} owner=hive group=hive mode=0644
+  when: ansible_hostname in groups['hive-server2']
+  with_items:
+   - hive-site.xml
+   - hive-env.sh
+
+
+
+

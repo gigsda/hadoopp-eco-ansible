@@ -1,3 +1,0 @@
-
-- name: install hadoop mapreduce historyserver pkg
-  yum: pkg=hadoop-mapreduce-historyserver state=installed

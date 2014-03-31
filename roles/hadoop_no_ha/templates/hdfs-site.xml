@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<configuration>
+     <property>  
+             <name>dfs.name.dir</name>  
+             <value>/var/lib/hadoop/cache/hdfs/name</value> 
+     </property> 
+     <property>  
+             <name>dfs.data.dir</name>  
+             <value>/data01/hadoop/hdfs/data</value> 
+     </property> 
+     <property>  
+             <name>dfs.http.address</name>  
+             <value>tb4:50070</value> 
+     </property> 
+     <property>  
+             <name>dfs.secondary.http.address</name>  
+             <value>tb4:50090</value> 
+     </property> 
+     <property>  
+             <name>dfs.https.address</name>  
+             <value>tb4:50470</value> 
+     </property> 
+</configuration>

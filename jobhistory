@@ -1,0 +1,180 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+  <style type="text/css">
+    #jobs_paginate span {font-weight:normal}
+    #jobs .progress {width:8em}
+    #jobs_processing {top:-1.5em; font-size:1em;
+      color:#000; background:rgba(255, 255, 255, 0.8)}
+  </style>
+  <title>
+    JobHistory
+  </title>
+  <link rel="stylesheet" href="/static/yarn.css">
+  <style type="text/css">
+    #layout { height: 100%; }
+    #layout thead td { height: 3em; }
+    #layout #navcell { width: 11em; padding: 0 1em; }
+    #layout td.content { padding-top: 0 }
+    #layout tbody { vertical-align: top; }
+    #layout tfoot td { height: 4em; }
+  </style>
+  <link rel="stylesheet" href="/static/jquery/themes-1.9.1/base/jquery-ui.css">
+  <link rel="stylesheet" href="/static/dt-1.9.4/css/jui-dt.css">
+  <script type="text/javascript" src="/static/jquery/jquery-1.8.2.min.js">
+  </script>
+  <script type="text/javascript" src="/static/jquery/jquery-ui-1.9.1.custom.min.js">
+  </script>
+  <script type="text/javascript" src="/static/dt-1.9.4/js/jquery.dataTables.min.js">
+  </script>
+  <script type="text/javascript" src="/static/yarn.dt.plugins.js">
+  </script>
+  <style type="text/css">
+    #jsnotice { padding: 0.2em; text-align: center; }
+    .ui-progressbar { height: 1em; min-width: 5em }
+  </style>
+  <script type="text/javascript">
+    $(function() {
+      $('#nav').accordion({autoHeight:false, active:0});
+    jobsDataTable =  $('#jobs').dataTable({bStateSave : true, "fnStateSave": function (oSettings, oData) { sessionStorage.setItem( oSettings.sTableId, JSON.stringify(oData) ); }, "fnStateLoad": function (oSettings) { return JSON.parse( sessionStorage.getItem(oSettings.sTableId) );}, bJQueryUI:true, sPaginationType: 'full_numbers', iDisplayLength:20, aLengthMenu:[20, 40, 60, 80, 100], 'aaData': jobsTableData, bDeferRender: true, bProcessing: true, aaSorting: [[2, 'desc']], aoColumnDefs:[{'sType':'numeric', 'bSearchable': false, 'aTargets': [ 7, 8, 9, 10 ] }]}).fnSetFilteringDelay(188);
+    var asInitVals = new Array();
+$('tfoot input').keyup( function () 
+{  jobsDataTable.fnFilter( this.value, $('tfoot input').index(this) );
+} );
+$('tfoot input').each( function (i) {
+  asInitVals[i] = this.value;
+} );
+$('tfoot input').focus( function () {
+  if ( this.className == 'search_init' )
+  {
+    this.className = '';
+    this.value = '';
+  }
+} );
+$('tfoot input').blur( function (i) {
+  if ( this.value == '' )
+  {
+    this.className = 'search_init';
+    this.value = asInitVals[$('tfoot input').index(this)];
+  }
+} );
+
+    });
+  </script>
+  <div id="jsnotice" class="ui-state-error">
+    This page works best with javascript enabled.
+  </div>
+  <script type="text/javascript">
+    $('#jsnotice').hide();
+  </script>
+  <table id="layout" class="ui-widget-content">
+    <thead>
+      <tr>
+        <td colspan="2">
+          <div id="header" class="ui-widget">
+            <div id="user">
+              Logged in as: dr.who
+            </div>
+            <div id="logo">
+              <img src="/static/hadoop-st.png">
+            </div>
+            <h1>
+              JobHistory
+            </h1>
+          </div>
+    <tfoot>
+      <tr>
+        <td colspan="2">
+          <div id="footer" class="ui-widget">
+            <a href="http://hadoop.apache.org/">About Apache Hadoop</a>
+          </div>
+    <tbody>
+      <tr>
+        <td id="navcell">
+          <div id="nav">
+            <h3>
+              Application
+            </h3>
+            <ul>
+              <li>
+                <a href="/jobhistory/about">About</a>
+              <li>
+                <a href="/jobhistory/app">Jobs</a>
+            </ul>
+            <h3>
+              Tools
+            </h3>
+            <ul>
+              <li>
+                <a href="/conf">Configuration</a>
+              <li>
+                <a href="/logs">Local logs</a>
+              <li>
+                <a href="/stacks">Server stacks</a>
+              <li>
+                <a href="/metrics">Server metrics</a>
+            </ul>
+          </div>
+        <td class="content">
+          <h2>
+            Retired Jobs
+          </h2>
+          <table id="jobs">
+            <thead>
+              <tr>
+                <th>
+                  Start Time
+                <th>
+                  Finish Time
+                <th class="id">
+                  Job ID
+                <th class="name">
+                  Name
+                <th>
+                  User
+                <th>
+                  Queue
+                <th class="state">
+                  State
+                <th>
+                  Maps Total
+                <th>
+                  Maps Completed
+                <th>
+                  Reduces Total
+                <th>
+                  Reduces Completed
+            <script type="text/javascript">
+              var jobsTableData=[
+]
+            </script>
+            <tbody>
+            </tbody>
+            <tfoot>
+              <tr>
+                <th>
+                  <input class="search_init" type="text" name="start_time" value="Start Time">
+                <th>
+                  <input class="search_init" type="text" name="finish_time" value="Finish Time">
+                <th>
+                  <input class="search_init" type="text" name="start_time" value="Job ID">
+                <th>
+                  <input class="search_init" type="text" name="start_time" value="Name">
+                <th>
+                  <input class="search_init" type="text" name="start_time" value="User">
+                <th>
+                  <input class="search_init" type="text" name="start_time" value="Queue">
+                <th>
+                  <input class="search_init" type="text" name="start_time" value="State">
+                <th>
+                  <input class="search_init" type="text" name="start_time" value="Maps Total">
+                <th>
+                  <input class="search_init" type="text" name="start_time" value="Maps Completed">
+                <th>
+                  <input class="search_init" type="text" name="start_time" value="Reduces Total">
+                <th>
+                  <input class="search_init" type="text" name="start_time" value="Reduces Completed">
+          </table>
+    </tbody>
+  </table>
+</html>

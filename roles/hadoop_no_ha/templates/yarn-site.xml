@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<!--
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License. See accompanying LICENSE file.
+-->
+<configuration>
+    <property>       
+     <name>yarn.resourcemanager.resourcetracker.address</name>       
+     <value>tb4:8025</value>  
+     <description>Enter your ResourceManager hostname.</description>
+    </property>
+    <property>       
+     <name>yarn.resourcemanager.scheduler.address</name>       
+     <value>tb4:8030</value>  
+     <description>Enter your ResourceManager hostname.</description>
+    </property>
+    <property>       
+     <name>yarn.resourcemanager.address</name>       
+     <value>tb4:8050</value>  
+     <description>Enter your ResourceManager hostname.</description>
+    </property>
+    <property>       
+     <name>yarn.resourcemanager.webapp.address</name>       
+     <value>tb4:8088</value>  
+     <description>ResourceManager web-ui host:port.</description>
+    </property>
+    <property>       
+     <name>yarn.nodemanager.aux-services</name>       
+     <value>mapreduce_shuffle</value>  
+    </property>
+    <property>       
+     <name>yarn.nodemanager.aux-services.mapreduce.shuffle.class</name>       
+     <value>org.apache.hadoop.mapred.ShuffleHandler</value>  
+    </property>
+    <property>       
+     <name>yarn.resourcemanager.admin.address</name>       
+     <value>tb4:8041</value>  
+     <description>Enter your ResourceManager hostname.</description>
+    </property>
+    <property> 
+     <name>yarn.log.server.url</name> 
+      <value>http://tb4:19888/jobhistory/logs/</value>
+    </property>
+    <property>       
+     <name>yarn.nodemanager.local-dirs</name>       
+     <value>/data01/hadoop/yarn</value>  
+    </property>
+    <property>
+     <name>yarn.application.classpath</name>
+     <value>
+        /etc/hadoop/conf/,
+        /usr/lib/hadoop/*,
+        /usr/lib/hadoop/lib/*,
+        /usr/lib/hadoop-hdfs/*,
+        /usr/lib/hadoop-hdfs/lib/*,
+        /usr/lib/hadoop-mapreduce/*,
+        /usr/lib/hadoop-yarn/*,
+        /usr/lib/hadoop-yarn/lib/*
+        </value>
+    </property>
+    <property>       
+     <name>yarn.nodemanager.log-dirs</name>       
+     <value>/var/log/hadoop-yarn</value>
+     <description>Use the list of directories from $YARN_LOG_DIR.  
+                    For example, /var/log/hadoop/yarn.</description>
+    </property>
+    <property>       
+     <name>yarn.nodemanager.remote-app-log-dir</name>       
+     <value>/app-logs</value>
+    </property>
+
+</configuration>

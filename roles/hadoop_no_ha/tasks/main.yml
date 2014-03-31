@@ -1,0 +1,69 @@
+
+
+- name: install hadoop hdfs datanode pkg
+  yum: pkg=hadoop-hdfs-datanode state=installed
+  when: ansible_hostname in groups['hadoop-hdfs-datanode']
+
+- name: install hadoop hdfs datanode pkg
+  yum: pkg={{ item }} state=installed
+  when: ansible_hostname in groups['hadoop-hdfs-datanode']
+  with_items:
+     - snappy
+     - snappy-devel
+     - lzo 
+     - lzo-devel 
+     - hadoop-lzo 
+     - hadoop-lzo-native  
+
+
+- name: install hadoop hdfs secondarynamenode pkg
+  yum: pkg=hadoop-hdfs-secondarynamenode state=installed
+  when: ansible_hostname in groups['hadoop-hdfs-secondarynamenode']
+
+- name: install hadoop hdfs namenode pkg
+  yum: pkg=hadoop-hdfs-namenode state=installed
+  when: ansible_hostname in groups['hadoop-hdfs-namenode']
+
+- name: install hadoop mapreduce historyserver pkg
+  yum: pkg=hadoop-mapreduce-historyserver state=installed
+  when: ansible_hostname in groups['hadoop-mapreduce-historyserver']
+
+- name: install hadoop yarn nodemanager pkg
+  yum: pkg=hadoop-yarn-nodemanager state=installed
+  when: ansible_hostname in groups['hadoop-yarn-nodemanager']
+
+
+- name: install hadoop yarn resourcemanager pkg
+  yum: pkg=hadoop-yarn-resourcemanager state=installed
+  when: ansible_hostname in groups['hadoop-yarn-resourcemanager']
+
+
+
+- name: Create name dir on namenode at {{ hadoop.dfs_name_dir }}
+  action: file dest={{ item }} state=directory owner=hdfs group=hdfs mode=0755
+  when: ansible_hostname in groups['hadoop-hdfs-namenode']
+  with_items: hadoop.dfs_name_dir
+
+- name: Create data dir on datanodes at {{ hadoop.dfs_data_dir }}
+  action: file dest={{ item }} state=directory owner=hdfs group=hdfs mode=0755
+  when: ansible_hostname in groups['hadoop-hdfs-datanode']
+  with_items: hadoop.dfs_data_dir
+
+- name: Create checkpoint local dir on hadoop nodes at {{ hadoop.fs_checkpoint_dir }}
+  action: file dest={{ item }} state=directory owner=hdfs group=hdfs mode=0755
+  when: ansible_hostname in groups['hadoop-hdfs-secondarynamenode']
+  with_items: hadoop.fs_checkpoint_dir
+
+- name: Create mapred local dir on yarn nodes at {{ hadoop.mapred_local_dir }}
+  action: file dest={{ item }} state=directory owner=mapred group=mapred mode=0755
+  when: ansible_hostname in groups['hadoop-yarn-nodemanager']
+  with_items: hadoop.mapred_local_dir
+
+- name: Create yarn local dir on yarn nodes at {{ hadoop.yarn_local_dir }}
+  action: file dest={{ item }} state=directory owner=yarn group=yarn mode=0755
+  when: ansible_hostname in groups['hadoop-yarn-nodemanager']
+  with_items: hadoop.yarn_local_dir
+
+
+
+

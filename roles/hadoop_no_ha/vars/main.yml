@@ -1,0 +1,13 @@
+hadoop:
+  dfs_name_dir:
+   - "/var/lib/hadoop/cache/hdfs/name"
+  dfs_data_dir:
+   - "/data01/hadoop/hdfs/data"
+  mapred_local_dir:
+   - "/data01/hadoop/mapred/local"
+  fs_checkpoint_dir: 
+   - "/var/lib/hadoop/cache/hdfs/secondname"
+
+  yarn_local_dir:
+   - "/data01/hadoop/yarn/local"
+ 

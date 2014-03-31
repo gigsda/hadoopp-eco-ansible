@@ -1,0 +1,7 @@
+
+
+
+
+- hosts: hadoop
+  roles:
+    - hadoop_no_ha
